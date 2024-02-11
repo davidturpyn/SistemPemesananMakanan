@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Tambah Pesanan";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+@using (Html.BeginForm("Insert", "Pesanan", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nomor Pesanan</label>
+        <input disabled type="text" class="form-control" value="@ViewBag.nomorPesanan">
+        <input hidden type="text" name="nomorPesanan" class="form-control" value="@ViewBag.nomorPesanan">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Nomor Meja</label>
+        <input type="number" name="nomorMeja" class="form-control" id="exampleInputPassword1" placeholder="Nomor Meja">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Makanan</label>
+        <select class="form-control" name="idMakanan" id="idMakanan">
+            <option selected disabled>Pilih makanan</option>
+            @foreach (var item in ViewBag.makanan)
+            {
+                <option value="@item.Id">@item.Nama</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Makanan</label>
+        <select class="form-control" name="idMinuman" id="idMinuman">
+            <option selected disabled>Pilih minuman</option>
+            @foreach (var item in ViewBag.minuman)
+            {
+                <option value="@item.Id">@item.Nama</option>
+            }
+        </select>
+    </div>
+    <div style="margin-top:20px;">
+        <button type="submit" class="btn btn-primary">Tambah</button>
+    </div>
+}

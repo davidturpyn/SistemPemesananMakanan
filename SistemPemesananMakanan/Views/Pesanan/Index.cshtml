@@ -1,0 +1,35 @@
+﻿@model ICollection<Pesanan>
+@{
+    ViewData["Title"] = "Pesanan";
+}
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Pesanan">Tambah Pesanan</a>
+
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nomor Pesanan</th>
+                <th scope="col">Nomor Meja</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.NomorPesanan</th>
+                    <td>@item.NomorMeja</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="ConfirmPayment" asp-controller="Pesanan" asp-route-id="@item.Id">Konfirmasi Pembayaran</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

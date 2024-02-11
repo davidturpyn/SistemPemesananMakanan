@@ -1,0 +1,30 @@
+﻿@model ICollection<Pesanan>
+@{
+    ViewData["Title"] = "Pesanan";
+}
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary" asp-action="DownloadExcel" asp-controller="Pesanan">Download Report</a>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nomor Pesanan</th>
+                <th scope="col">Nomor Meja</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.NomorPesanan</th>
+                    <td>@item.NomorMeja</td>
+                    <td>@item.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
